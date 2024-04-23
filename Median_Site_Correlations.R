@@ -29,6 +29,7 @@ df$rank_Gibbs_per_C <- rank(df$Gibbs_per_C)
 df$rank_Gibbs_per_compound <- rank(df$Gibbs_per_compound)
 df$rank_Lambda <- rank(df$Lambda)
 df$rank_ATP <- rank(df$Mean_ATP_picomol_per_g)
+df$rank_NPOC <- rank(df$mean_npoc)
 
 # Calculate regression and add to data frame
 model <- lm(rank_Mean_OutliersRemoved_Respiration_Rate_mg_DO_per_kg_per_H ~ rank_Gibbs_per_C, data = df)
@@ -75,4 +76,25 @@ p3 <- ggplot(df, aes(x = rank_Mean_OutliersRemoved_Respiration_Rate_mg_DO_per_kg
        y = "Rank of ATP ") +
   facet_wrap(~ Treatment)+ theme_bw()
 
+
+p4 <- ggplot(df, aes(x = rank_Mean_OutliersRemoved_Respiration_Rate_mg_DO_per_kg_per_H, y = mean_npoc)) +
+  geom_point() +
+  stat_cor(method = "spearman",cor.coef.name = c( "rho"),
+           aes(label = paste(..r.label.., ..p.label.., sep = "~`,`~")), 
+           label.x = 17,label.y = 15,color='black',size=4)+ 
+  labs(title = " ",
+       x = "Rank of Mean_OutliersRemoved_Respiration_Rate_mg_DO_per_kg_per_H",
+       y = "Mean NPOC ") +
+  facet_wrap(~ Treatment)+ theme_bw()
+
+
+ggplot(df, aes(x = Mean_OutliersRemoved_Respiration_Rate_mg_DO_per_kg_per_H, y = mean_npoc)) +
+  geom_point() +
+  stat_cor(method = "spearman",cor.coef.name = c( "rho"),
+           aes(label = paste(..r.label.., ..p.label.., sep = "~`,`~")), 
+           label.x = 17,label.y = 15,color='black',size=4)+ 
+  labs(title = " ",
+       x = "Mean_OutliersRemoved_Respiration_Rate_mg_DO_per_kg_per_H",
+       y = "Mean NPOC ") +
+  facet_wrap(~ Treatment)+ theme_bw()
 
