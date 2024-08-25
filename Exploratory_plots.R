@@ -5,7 +5,7 @@ library(stringr); library(devtools);  library("plyr")
 library("readr"); library(tidyverse); library(readxl);library(crayon); library(vegan)
 
 # ==== Defining paths and working directories ======
-setwd('C:/Users/gara009/OneDrive - PNNL/Documents - Core Richland and Sequim Lab-Field Team/Data Generation and Files/ECA/FTICR/03_ProcessedData/EC_Data_Processed_FTICR/')
+setwd('C:/Users/gara009/OneDrive - PNNL/Documents - Core Richland and Sequim Lab-Field Team/Data Generation and Files/ECA/FTICR/03_ProcessedData/Formularity/EC_Data_Processed_FTICR/')
 
 
 # ====== Read in data ======
@@ -53,7 +53,7 @@ data[data > 0] = 1
 ### Moving onto the permissive dataset
 # Peaks in >50% of the blanks
 peaks.to.remove = row.names(data)[(rowSums(data[,which(factors$Sample_Type %in% "Process Blank")])/
-                                     ncol(data[,which(factors$Sample_Type %in% "Process Blank")])) > 0.25]
+                                     ncol(data[,which(factors$Sample_Type %in% "Process Blank")])) > 0.5]
 
 # Removing peaks
 data_clean = data[-which(row.names(data) %in% peaks.to.remove),]
@@ -81,28 +81,175 @@ df = merge(total_peaks_data,total_peaks_data_clean, by = 'Samples', all = T)
 df$Difference = df$Total_Peaks- df$Total_Peaks_Clean
 
 df2 = merge(df,factors, by = 'Samples', all = T)
+df2$Location = str_extract(df2$Samples, "EC_[A-Z0-9]+")
+
+# ==== Filter only to assigned MF =====
+dat = merge(data_clean,mol_clean, by = 0)
+
+# Only keep data that has MF assigned
+dat = filter(dat,dat$C >0)
+dat2 = dat[,1:556]
+row.names(dat2) = dat2$Row.names
+dat2 = dat2[,2:556]
+
+number_of_peaks_clean <- sapply(dat2, function(column) sum(column != 0))
+total_peaks_data_clean <- data.frame(Samples = names(number_of_peaks_clean), Total_Peaks_Clean = number_of_peaks_clean)
+
+
+df2 = merge(total_peaks_data_clean,factors, by = 'Samples', all = T)
+df2$Location = str_extract(df2$Samples, "EC_[A-Z0-9]+")
+
 # ====== Calibration Threshold ======
+library(ggpubr)
+library(viridis)
+lm_model <- lm(Total_Peaks_Clean ~ final, data = df2)
+
+num_categories <- length(unique(df2$Location))
+palette <- magma(num_categories)
+
+ggplot(df2, aes(color = factor(Location), y = Total_Peaks_Clean, x = final)) +
+  geom_point() +
+  scale_color_manual(values = palette) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", formula = y ~ x) +
+  annotate("text", x = 150, y = 5000, 
+           label = paste("R² =", round(summary(lm_model)$r.squared, 2), "\n", "p < 0.001"), hjust = 1, vjust = 1) +
+  labs(x = "Calibration Points", y = "Total peaks") +
+  theme_bw()
+
+lm_model <- lm(final ~ Total_Peaks_Clean, data = df2)
+palette <- viridis(num_categories)
+
+ggplot(df2, aes(color = factor(Location), x = Total_Peaks_Clean, y = final)) +
+  geom_point() +
+  scale_color_manual(values = palette) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", formula = y ~ x) +
+  annotate("text", y = 150, x = 1800, 
+           label = paste("R² =", round(summary(lm_model)$r.squared, 2), "\n", "p < 0.001"), hjust = 1, vjust = 1) +
+  labs(y = "Calibration Points", x = "Total peaks") +
+  theme_bw()+
+  geom_hline(yintercept = c(4, 15), linetype = "dashed", color = c("red",'blue'))
+
+
 df2$Site = str_extract(df2$Samples, "EC_[A-Z0-9]+_SIR-(D|W)")
 df2$Result = NA
 df2$Result = ifelse(df2$final < 15, "Fail", "Pass")
 df2$Total = 1
-df2 = df2[!is.na(df2$Difference), ]
-df2$Location = str_extract(df2$Site, "EC_[A-Z0-9]+")
+df2 = df2[!is.na(df2$Site), ]
 
 # Convert Result to a factor for better plotting
 df2$Result = factor(df2$Result)
+
+
 
 # Create a stacked bar plot
 ggplot(df2, aes(x = Site, y = Total, fill = Result)) +
   geom_bar(stat = "identity") +
   labs(x = "Site", y = "Total", fill = "Result") +
+  theme_bw()+
   theme(axis.text.x = element_text(size = 8, angle = 45, hjust = 1))
 
+
+# Create a stacked bar plot
+ggplot(df2, aes(x = Location, y = Total, fill = Result)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Site", y = "Total", fill = "Result") +
+  theme_bw()+
+  theme(axis.text.x = element_text(size = 8, angle = 45, hjust = 1))
+
+# 4 cal points
+df2$Result = NA
+df2$Result = ifelse(df2$final < 4, "Fail", "Pass")
+df2$Total = 1
+df2 = df2[!is.na(df2$Site), ]
+
+# Convert Result to a factor for better plotting
+df2$Result = factor(df2$Result)
+
+
+
+# Create a stacked bar plot
+ggplot(df2, aes(x = Site, y = Total, fill = Result)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Site", y = "Total", fill = "Result") +
+  theme_bw()+
+  theme(axis.text.x = element_text(size = 8, angle = 45, hjust = 1))
+
+
+# Create a stacked bar plot
+ggplot(df2, aes(x = Location, y = Total, fill = Result)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Site", y = "Total", fill = "Result") +
+  theme_bw()+
+  theme(axis.text.x = element_text(size = 8, angle = 45, hjust = 1))
+
+# ====== Multivariate Stats =======
+factors$Location = str_extract(factors$Samples, "EC_[A-Z0-9]+")
+factors$Treatment = factors$Samples
+factors$Treatment = str_extract(factors$Treatment, "W|D|Blk")
+factor = factors %>%
+  filter(Treatment != "Blk")
+
+# dat2 is the dataset only with MF assigned
+pca = prcomp(x = t(dat2)) # Calculating PCA
+pca = as.data.frame(scores(pca)) # Converting to PCA scores in order to plot using ggplot
+pca = cbind(factor, pca)
+
+pca <- pca %>%
+  mutate(final_category = ifelse(final > 15, "greater_than_15", "less_or_equal_15"))
+
+# Define colors for the new categories
+color_palette <- c("greater_than_15" = "blue", "less_or_equal_15" = "red")
+
+pca %>%
+  ggplot(aes(x = PC1, y = PC2))+
+  geom_point(aes(color = final_category, shape = Treatment),size = 2) +
+  # geom_point() +
+  #geom_label(aes(label = row.names(pca)))+
+  scale_shape_manual(values = c(0,1,2,3,4,5,6,7,8,9,10))+
+  scale_color_manual(values = color_palette) +
+  theme_bw()
+
+  # xlim(-25, 35) + ylim(-25, 35)+
+ # hori_x_theme 
+#+ theme(legend.position = "top")+
+#scale_color_manual(values=as.vector(alphabet(57)))
+ggsave(paste0("PCA_all_sites","_",Sys.Date(),".pdf"))
+# Plotting PCA
+
+### Beta-diversity
+# Creating distance matrix
+dist = vegdist(x = t(data), method = "jaccard") # Using Jaccard for historical reasons (ICR data is often analyzed using it)
+library(reshape2)
+# Plotting a Jaccard heatmap
+dist.melt = melt(as.matrix(dist))
+
+
+ggplot(data = dist.melt, aes(x = Var1, y = Var2, fill = value))+
+  geom_tile() + scale_fill_gradient2(low = "gray100", mid = "gray80", high = "darkred", midpoint = 0.4)+
+  xlab(NULL) + ylab(NULL)
+
+ggsave(paste0("Jacad_Heat_map_All_sites","_",Sys.Date(),".pdf"))
+
+# Plotting Jaccard NMDS
+nms = metaMDS(dist, trymax = 1000) # Determining NMDS
+nms = as.data.frame(scores(nms)) # Conveting to scores
+nms = cbind(factors, nms)
+
+library(pals)
+nms %>%
+  ggplot(aes(x = NMDS1, y = NMDS2))+
+  #geom_point() +
+  geom_point(aes(color = Treatment),size = 2) +theme_bw()
+# scale_color_manual(values=as.vector(alphabet(26)))
+ggsave(paste0("NMDS_all_sites","_",Sys.Date(),".pdf"))
+
+# ===== Exporting data ======
+# Deciding how many samples to keep based on a minimum number of resps that passed QAQC 
 # Deciding how many samples to keep based on a minimum number of resps that passed QAQC 
 
+# Keeping at least 4 cal points
 # For min of 4 reps
 result_4_reps <- df2 %>%
-  mutate(Location = str_extract(Site, "EC_[A-Z0-9]+")) %>%
 group_by(Location, Site) %>%
   summarise(pass_count = sum(Result == "Pass"))%>%
   group_by(Location) %>%
@@ -111,7 +258,6 @@ group_by(Location, Site) %>%
 
 # For min of 3 reps
 result_3_reps <- df2 %>%
-  mutate(Location = str_extract(Site, "EC_[A-Z0-9]+")) %>%
   group_by(Location, Site) %>%
   summarise(pass_count = sum(Result == "Pass"))%>%
   group_by(Location) %>%
@@ -139,8 +285,8 @@ data_4_reps <- data_clean[, intersect(names(data_clean), filtered_df_4_reps$Samp
 
 data_3_reps <- data_clean[, intersect(names(data_clean), filtered_df_3_reps$Samples)]
 
-write.csv(data_4_reps,'Processed_EC_four_reps_Data.csv')
+write.csv(data_4_reps,'Processed_EC_four_reps_four_cal_points_Data.csv')
 
-write.csv(data_3_reps,'Processed_EC_three_reps_Data.csv')
+write.csv(data_3_reps,'Processed_EC_three_reps_four_cal_points_Data.csv')
 
-write.csv(mol_clean,'Processed_EC_clean_Mol.csv')
+write.csv(mol_clean,'Processed_EC_clean_four_cal_points_Mol.csv')
