@@ -17,8 +17,8 @@ out_data = paste0(github,'CoreMS/Data/')
 
 # ====== Read in data ======
 # Processed ICR Data
-data = read.csv(list.files(pattern = "*Data.csv", path = input, full.names = T), row.names = 1)
-mol = read.csv(list.files(pattern = "*Mol.csv", path = input, full.names = T), row.names = 1)
+data = read.csv(list.files(pattern = "*Processed_Data.csv", path = input, full.names = T), row.names = 1)
+mol = read.csv(list.files(pattern = "*Processed_Mol.csv", path = input, full.names = T), row.names = 1)
 
 # Load the mapping file
 mapping =  read.csv(list.files(pattern = "*Mapping.csv", path = input, full.names = T),)
@@ -77,9 +77,12 @@ df = merge(total_peaks_data,total_peaks_data_clean, by = 'Samples', all = T)
 df$Difference = df$Total_Peaks- df$Total_Peaks_Clean
 
 df2 = merge(df,factors, by = 'Samples', all = T)
-names(df2)[2] = 'Total_Peaks_CoreMS'
-names(df2)[3] = 'Total_Peaks_Clean_CoreMS'
+names(df2)[2] = 'Total_Peaks_CoreMS_Raw'
+names(df2)[3] = 'Total_Peaks_Clean_CoreMS_Raw'
 names(df2)[4] = 'Difference_CoreMS'
+
+write.csv(df2, paste0(github,'CoreMS_Raw_Peaks.csv'), row.names = F)
+
 # ===== Load Total Peaks formularity =====
 peaks = read.csv(paste0(github,'Total_peaks_Formularity.csv'))
 test = merge(peaks,df2, by = c('Samples','Sample_Type'))
