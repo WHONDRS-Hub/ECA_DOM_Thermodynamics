@@ -1,0 +1,41 @@
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+cube_Median_Weighted_Avg_DBE ~ s(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g) + 
+    s(cube_Median_Extractable_NPOC_mg_per_kg) + ti(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g, 
+    cube_Median_Extractable_NPOC_mg_per_kg) + s(site, bs = "re")
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  2.30582    0.01046   220.4   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                                                                                                  edf
+s(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g)                                         1.000
+s(cube_Median_Extractable_NPOC_mg_per_kg)                                                       7.043
+ti(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg) 2.118
+s(site)                                                                                         5.493
+                                                                                                Ref.df
+s(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g)                                           1.00
+s(cube_Median_Extractable_NPOC_mg_per_kg)                                                         7.90
+ti(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg)   2.87
+s(site)                                                                                          37.00
+                                                                                                    F
+s(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g)                                         0.043
+s(cube_Median_Extractable_NPOC_mg_per_kg)                                                       2.271
+ti(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg) 0.457
+s(site)                                                                                         0.183
+                                                                                                p-value  
+s(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g)                                          0.8366  
+s(cube_Median_Extractable_NPOC_mg_per_kg)                                                        0.0325 *
+ti(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg)  0.7519  
+s(site)                                                                                          0.2115  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.264   Deviance explained = 41.7%
+GCV = 0.0051702  Scale est. = 0.0040373  n = 76

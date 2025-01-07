@@ -1,0 +1,20 @@
+
+Method: GCV   Optimizer: magic
+Smoothing parameter selection converged after 20 iterations.
+The RMS GCV score gradient at convergence was 7.253096e-08 .
+The Hessian was positive definite.
+Model rank =  73 / 73 
+
+Basis dimension (k) checking results. Low p-value (k-index<1) may
+indicate that k is too low, especially if edf is close to k'.
+
+                                                                                        k'  edf k-index
+s(Median_62948_Final_Gravimetric_Moisture_g_per_g)                                     9.0  1.0    1.06
+s(Median_Extractable_NPOC_mg_per_kg)                                                   9.0  1.0    0.92
+ti(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Extractable_NPOC_mg_per_kg) 16.0  1.0    1.14
+s(site)                                                                               38.0 14.4      NA
+                                                                                      p-value
+s(Median_62948_Final_Gravimetric_Moisture_g_per_g)                                       0.64
+s(Median_Extractable_NPOC_mg_per_kg)                                                     0.16
+ti(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Extractable_NPOC_mg_per_kg)    0.86
+s(site)                                                                                    NA

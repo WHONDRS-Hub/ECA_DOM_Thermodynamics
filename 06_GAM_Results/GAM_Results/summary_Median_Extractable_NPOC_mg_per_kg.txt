@@ -1,0 +1,37 @@
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+Median_Respiration_Rate_mg_DO_per_kg_per_H ~ te(Median_62948_Final_Gravimetric_Moisture_g_per_g, 
+    Median_Extractable_NPOC_mg_per_kg) + s(site, bs = "re")
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  -372.32      31.25  -11.91   <2e-16 ***
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                                                                                           edf
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Extractable_NPOC_mg_per_kg) 7.490222
+s(site)                                                                               0.002916
+                                                                                      Ref.df
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Extractable_NPOC_mg_per_kg)  9.062
+s(site)                                                                               37.000
+                                                                                         F
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Extractable_NPOC_mg_per_kg) 47.2
+s(site)                                                                                0.0
+                                                                                      p-value
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Extractable_NPOC_mg_per_kg)  <2e-16
+s(site)                                                                                 0.693
+                                                                                         
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Extractable_NPOC_mg_per_kg) ***
+s(site)                                                                                  
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =   0.85   Deviance explained = 86.5%
+-REML = 511.27  Scale est. = 74202     n = 76

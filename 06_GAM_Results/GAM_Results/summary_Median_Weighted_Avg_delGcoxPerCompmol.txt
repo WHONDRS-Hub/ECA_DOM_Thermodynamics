@@ -1,0 +1,37 @@
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+Median_Respiration_Rate_mg_DO_per_kg_per_H ~ te(Median_62948_Final_Gravimetric_Moisture_g_per_g, 
+    Median_Weighted_Avg_delGcoxPerCompmol) + s(site, bs = "re")
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  -372.32      36.14   -10.3 6.54e-15 ***
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                                                                                            edf
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Weighted_Avg_delGcoxPerCompmol) 6.099
+s(site)                                                                                   8.666
+                                                                                          Ref.df
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Weighted_Avg_delGcoxPerCompmol)  7.433
+s(site)                                                                                   37.000
+                                                                                               F
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Weighted_Avg_delGcoxPerCompmol) 42.256
+s(site)                                                                                    0.297
+                                                                                          p-value
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Weighted_Avg_delGcoxPerCompmol)  <2e-16
+s(site)                                                                                     0.186
+                                                                                             
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Weighted_Avg_delGcoxPerCompmol) ***
+s(site)                                                                                      
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.851   Deviance explained =   88%
+-REML = 513.27  Scale est. = 73949     n = 76

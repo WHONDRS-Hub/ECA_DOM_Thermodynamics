@@ -1,0 +1,31 @@
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+Median_Weighted_Avg_delGcoxPerCompmol ~ s(Median_62948_Final_Gravimetric_Moisture_g_per_g) + 
+    s(Median_Extractable_NPOC_mg_per_kg) + ti(Median_62948_Final_Gravimetric_Moisture_g_per_g, 
+    Median_Extractable_NPOC_mg_per_kg) + s(site, bs = "re")
+
+Parametric coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -142.7037     0.1691  -843.9   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                                                                                        edf Ref.df     F
+s(Median_62948_Final_Gravimetric_Moisture_g_per_g)                                     1.00      1 0.149
+s(Median_Extractable_NPOC_mg_per_kg)                                                   1.00      1 0.145
+ti(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Extractable_NPOC_mg_per_kg)  1.00      1 0.000
+s(site)                                                                               20.89     37 1.352
+                                                                                      p-value   
+s(Median_62948_Final_Gravimetric_Moisture_g_per_g)                                    0.70154   
+s(Median_Extractable_NPOC_mg_per_kg)                                                  0.70488   
+ti(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_Extractable_NPOC_mg_per_kg) 0.99999   
+s(site)                                                                               0.00217 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =   0.39   Deviance explained = 58.5%
+-REML = 115.25  Scale est. = 0.78933   n = 76

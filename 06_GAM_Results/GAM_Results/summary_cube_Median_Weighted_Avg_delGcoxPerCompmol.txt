@@ -1,0 +1,37 @@
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+cube_Median_Respiration_Rate_mg_DO_per_kg_per_H ~ te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g, 
+    cube_Median_Weighted_Avg_delGcoxPerCompmol) + s(site, bs = "re")
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  -4.2814     0.3241  -13.21   <2e-16 ***
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                                                                                                       edf
+te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Weighted_Avg_delGcoxPerCompmol)  6.711
+s(site)                                                                                             15.831
+                                                                                                    Ref.df
+te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Weighted_Avg_delGcoxPerCompmol)  8.253
+s(site)                                                                                             37.000
+                                                                                                         F
+te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Weighted_Avg_delGcoxPerCompmol) 15.312
+s(site)                                                                                              0.743
+                                                                                                    p-value
+te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Weighted_Avg_delGcoxPerCompmol)  <2e-16
+s(site)                                                                                              0.0275
+                                                                                                       
+te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Weighted_Avg_delGcoxPerCompmol) ***
+s(site)                                                                                             *  
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.757   Deviance explained =   83%
+-REML =  169.2  Scale est. = 4.3001    n = 76

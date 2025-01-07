@@ -1,0 +1,7 @@
+"","Model","AIC_default","AIC_REML"
+"ggam_ai_mod","AI_mod",-306.98054966012,-302.006454911839
+"ggam_nosc","NOSC",-155.524350676691,-149.423535448131
+"ggam_dbe","DBE",245.456811548782,252.255417277892
+"ggam_delGcoxPerCmol","delGcoxPerCmol",217.765189292757,223.520451832377
+"ggam_delGcoxPerCompmol","delGcoxPerCompmol",217.765189292757,223.520451832377
+"ggam_lambda","Lambda",-732.430694981149,-718.973838380034

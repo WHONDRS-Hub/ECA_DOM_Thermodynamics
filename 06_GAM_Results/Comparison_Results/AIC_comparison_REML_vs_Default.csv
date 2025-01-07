@@ -1,0 +1,17 @@
+"","Model","AIC"
+"1","Null",397.244052392916
+"2","cube_Median_Weighted_Avg_AI_mod",353.010146844792
+"3","cube_Median_Weighted_Avg_NOSC",345.389784854427
+"4","cube_Median_Weighted_Avg_DBE",351.449672092874
+"5","cube_Median_Weighted_Avg_delGcoxPerCmol",345.331350297277
+"6","cube_Median_Weighted_Avg_delGcoxPerCompmol",345.331350297277
+"7","cube_Median_Weighted_Avg_Lambda",350.849589937012
+"8","cube_Median_Extractable_NPOC_mg_per_kg",355.875582768765
+"9","Null_cube",397.244052392916
+"10","cube_Median_Weighted_Avg_AI_mod",367.305751310388
+"11","cube_Median_Weighted_Avg_NOSC",360.423092351328
+"12","cube_Median_Weighted_Avg_DBE",358.981310050099
+"13","cube_Median_Weighted_Avg_delGcoxPerCmol",358.928398391001
+"14","cube_Median_Weighted_Avg_delGcoxPerCompmol",358.928398391001
+"15","cube_Median_Weighted_Avg_Lambda",370.922611675578
+"16","cube_Median_Extractable_NPOC_mg_per_kg",360.186425657914
