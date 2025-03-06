@@ -8,30 +8,30 @@ cube_Median_Respiration_Rate_mg_DO_per_kg_per_H ~ te(cube_Median_62948_Final_Gra
 
 Parametric coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  -4.2814     0.2754  -15.54   <2e-16 ***
+(Intercept)   -4.216      0.341  -12.36 2.84e-15 ***
 ---
 Signif. codes:  
 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Approximate significance of smooth terms:
                                                                                                    edf
-te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg) 5.8925
-s(site)                                                                                         0.9382
+te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg)  9.596
+s(site)                                                                                         15.219
                                                                                                 Ref.df
-te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg)  7.086
-s(site)                                                                                         37.000
+te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg)  11.35
+s(site)                                                                                          32.00
                                                                                                      F
-te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg) 22.583
-s(site)                                                                                          0.026
+te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg) 12.207
+s(site)                                                                                          0.831
                                                                                                 p-value
 te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg)  <2e-16
-s(site)                                                                                           0.423
+s(site)                                                                                          0.0396
                                                                                                    
 te(cube_Median_62948_Final_Gravimetric_Moisture_g_per_g,cube_Median_Extractable_NPOC_mg_per_kg) ***
-s(site)                                                                                            
+s(site)                                                                                         *  
 ---
 Signif. codes:  
 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-R-sq.(adj) =  0.684   Deviance explained = 71.3%
--REML = 169.05  Scale est. = 5.6006    n = 76
+R-sq.(adj) =  0.803   Deviance explained = 87.8%
+GCV = 5.7754  Scale est. = 3.5164    n = 66

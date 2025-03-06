@@ -1,0 +1,144 @@
+==========================================
+Treatment Effect Models
+==========================================
+
+PC1 with Treatment
+Linear mixed model fit by REML ['lmerMod']
+Formula: PC1 ~ Treatment + (1 | site)
+   Data: cbind(final_cube_predictors_scaled, pc_scores)
+
+REML criterion at convergence: 239.1
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-1.84194 -0.52823 -0.03583  0.56124  1.77467 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ site     (Intercept) 1.320    1.149   
+ Residual             1.246    1.116   
+Number of obs: 66, groups:  site, 33
+
+Fixed effects:
+             Estimate Std. Error t value
+(Intercept)   0.06668    0.27884   0.239
+TreatmentWet -0.13336    0.27475  -0.485
+
+Correlation of Fixed Effects:
+            (Intr)
+TreatmentWt -0.493
+
+PC2 with Treatment
+Linear mixed model fit by REML ['lmerMod']
+Formula: PC2 ~ Treatment + (1 | site)
+   Data: cbind(final_cube_predictors_scaled, pc_scores)
+
+REML criterion at convergence: 238.9
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.26256 -0.60274 -0.00077  0.47190  2.53076 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ site     (Intercept) 0.2906   0.5391  
+ Residual             1.9234   1.3869  
+Number of obs: 66, groups:  site, 33
+
+Fixed effects:
+             Estimate Std. Error t value
+(Intercept)   0.01135    0.25902   0.044
+TreatmentWet -0.02271    0.34142  -0.067
+
+Correlation of Fixed Effects:
+            (Intr)
+TreatmentWt -0.659
+
+==========================================
+Continuous Moisture Models
+==========================================
+
+PC1 with Moisture
+Linear mixed model fit by REML ['lmerMod']
+Formula: 
+PC1 ~ cube_Median_62948_Final_Gravimetric_Moisture_g_per_g +  
+    (1 | site)
+   Data: cbind(final_cube_predictors_scaled, pc_scores)
+
+REML criterion at convergence: 239.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-1.8910 -0.5162 -0.0460  0.5341  1.7761 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ site     (Intercept) 1.318    1.148   
+ Residual             1.235    1.111   
+Number of obs: 66, groups:  site, 33
+
+Fixed effects:
+                                                       Estimate
+(Intercept)                                           4.160e-17
+cube_Median_62948_Final_Gravimetric_Moisture_g_per_g -1.491e-01
+                                                     Std. Error
+(Intercept)                                           2.422e-01
+cube_Median_62948_Final_Gravimetric_Moisture_g_per_g  1.854e-01
+                                                     t value
+(Intercept)                                            0.000
+cube_Median_62948_Final_Gravimetric_Moisture_g_per_g  -0.804
+
+Correlation of Fixed Effects:
+            (Intr)
+c_M_62948_F 0.000 
+
+PC2 with Moisture
+Linear mixed model fit by REML ['lmerMod']
+Formula: 
+PC2 ~ cube_Median_62948_Final_Gravimetric_Moisture_g_per_g +  
+    (1 | site)
+   Data: cbind(final_cube_predictors_scaled, pc_scores)
+
+REML criterion at convergence: 239.2
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.33120 -0.53344 -0.06575  0.49640  2.48695 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ site     (Intercept) 0.2597   0.5096  
+ Residual             1.9173   1.3847  
+Number of obs: 66, groups:  site, 33
+
+Fixed effects:
+                                                       Estimate
+(Intercept)                                          -2.880e-16
+cube_Median_62948_Final_Gravimetric_Moisture_g_per_g  1.850e-01
+                                                     Std. Error
+(Intercept)                                           1.921e-01
+cube_Median_62948_Final_Gravimetric_Moisture_g_per_g  1.852e-01
+                                                     t value
+(Intercept)                                            0.000
+cube_Median_62948_Final_Gravimetric_Moisture_g_per_g   0.999
+
+Correlation of Fixed Effects:
+            (Intr)
+c_M_62948_F 0.000 
+
+==========================================
+PERMANOVA Results
+==========================================
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = cube_response ~ Treatment + site, data = explanatory_data, method = "euclidean", by = "margin")
+          Df SumOfSqs      R2      F Pr(>F)   
+Treatment  1    0.580 0.00354 0.4730  0.548   
+site      32  124.307 0.75729 3.1663  0.002 **
+Residual  32   39.259 0.23917                 
+Total     65  164.147 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

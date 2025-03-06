@@ -1,0 +1,37 @@
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+Median_Respiration_Rate_mg_DO_per_kg_per_H ~ te(Median_62948_Final_Gravimetric_Moisture_g_per_g, 
+    Median_NOSC) + s(site, bs = "re")
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  -373.06      35.64  -10.47 4.21e-15 ***
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                                                                     edf
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_NOSC) 5.647206
+s(site)                                                         0.003482
+                                                                Ref.df
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_NOSC)  6.761
+s(site)                                                         32.000
+                                                                    F
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_NOSC) 52.64
+s(site)                                                          0.00
+                                                                p-value
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_NOSC)  <2e-16
+s(site)                                                           0.485
+                                                                   
+te(Median_62948_Final_Gravimetric_Moisture_g_per_g,Median_NOSC) ***
+s(site)                                                            
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.844   Deviance explained = 85.8%
+-REML = 442.59  Scale est. = 83825     n = 66

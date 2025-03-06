@@ -7,17 +7,17 @@ Median_Respiration_Rate_mg_DO_per_kg_per_H ~ 1 + s(site, bs = "re")
 
 Parametric coefficients:
             Estimate Std. Error t value Pr(>|t|)   
-(Intercept)   -372.3      109.2  -3.408  0.00146 **
+(Intercept)   -373.1      122.3   -3.05  0.00426 **
 ---
 Signif. codes:  
 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Approximate significance of smooth terms:
           edf Ref.df     F p-value    
-s(site) 33.15     37 8.618  <2e-16 ***
+s(site) 28.63     32 8.492  <2e-16 ***
 ---
 Signif. codes:  
 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-R-sq.(adj) =   0.81   Deviance explained = 89.4%
-GCV = 1.7127e+05  Scale est. = 94304     n = 76
+R-sq.(adj) =  0.807   Deviance explained = 89.2%
+GCV = 1.8881e+05  Scale est. = 1.0405e+05  n = 66
