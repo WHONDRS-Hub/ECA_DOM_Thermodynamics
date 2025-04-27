@@ -1,0 +1,22 @@
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+resp_cube ~ te(moisture, gibbs) + s(site, bs = "re")
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  -4.2156     0.3429  -12.29 5.41e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Approximate significance of smooth terms:
+                      edf Ref.df      F p-value    
+te(moisture,gibbs)  5.891  6.708 18.326  <2e-16 ***
+s(site)            14.068 32.000  0.792  0.0318 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+R-sq.(adj) =  0.771   Deviance explained = 84.2%
+-REML = 145.74  Scale est. = 4.0747    n = 66

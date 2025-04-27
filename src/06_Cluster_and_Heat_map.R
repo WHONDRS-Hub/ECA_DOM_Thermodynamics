@@ -85,6 +85,7 @@ treatment_effects <- dom_data %>%
   ) %>%
   select(site, starts_with("effect_"))
 
+treatment_df = treatment_effects
 # Prepare the effect matrix for heatmap
 effect_matrix <- treatment_effects %>%
   column_to_rownames("site") %>%
@@ -570,10 +571,74 @@ site_cluster_data <- data.frame(
     by = "site"
   )
 
+dom_cluster_data <- data.frame(
+  site = names(site_clusters),
+  cluster = site_clusters
+) %>%
+  left_join(
+    treatment_df,
+    by = "site"
+  )
+
+
+# === DOM effects by cluster ====
+effectGibbs = ggplot(dom_cluster_data, aes(x = effect_delGcoxPerCmol, fill = factor(cluster))) +
+  #geom_histogram(position = "dodge", bins = 25, alpha = 0.75) +
+  geom_density(alpha = 0.75)+
+  scale_fill_manual(values = c("1" = "#74C0FC", "2" = "#FFD43B", "3" = "#FF8FAB"))  +
+  theme_bw() +theme(aspect.ratio=1)+
+  theme(
+    legend.position = "bottom"
+  )+
+  labs(
+    x = expression(paste(Effect~Size~Delta, G[cox], ~(kJ~Cmol^{-1}))),
+    fill = 'Cluster',
+    title = 'C'
+  )
+effectlambda = ggplot(dom_cluster_data, aes(x = effect_Lambda, fill = factor(cluster))) +
+  #geom_histogram(position = "dodge", bins = 25, alpha = 0.75) +
+  geom_density(alpha = 0.75)+
+  scale_fill_manual(values = c("1" = "#74C0FC", "2" = "#FFD43B", "3" = "#FF8FAB"))  +
+  theme_bw() +theme(aspect.ratio=1)+
+  theme(
+    legend.position = "bottom"
+  )+
+  labs(
+    x = expression(paste(Effect~Size~lambda)),
+    fill = 'Cluster',
+    title = 'D'
+  )
+
+library(patchwork)  # For combining plots
+library(ggplot2)
+
+# Combine the plots using patchwork
+combined_plot <- effectGibbs + effectlambda + 
+  plot_layout(guides = "collect") &  # Collect legends together
+  theme(legend.position = "bottom")
+
+# Save the combined plot
+ggsave(
+  "Figures/FigureS_effect_sizes_by_cluster.png",
+  combined_plot,
+  width = 10,
+  height = 5,
+  dpi = 300
+)
+
+# For a PDF version
+ggsave(
+  "Figures/FigureS_effect_sizes_by_cluster.pdf",
+  combined_plot,
+  width = 10,
+  height = 5,
+  device = cairo_pdf
+)
+# === Boxplots clusters ====
 # Visualize cluster composition by Region
 ggplot(site_cluster_data, aes(x = factor(cluster), fill = Ecoregion)) +
   geom_bar(position = "fill") +
-  theme_bw() +
+  theme_bw() + 
   labs(title = "Composition of Response Clusters by Ecoregion",
        x = "Cluster",
        y = "Proportion")
