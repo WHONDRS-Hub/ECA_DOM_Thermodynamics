@@ -1,7 +1,0 @@
-"treatment_effect","env_variable","correlation","p_value"
-"cube_effect_delGcoxPerCmol","cube_effect_delGcoxPerCmol",1,NA
-"cube_effect_delGcoxPerCmol","cube_effect_Lambda",-0.543726693516261,0.00156977556760518
-"cube_effect_delGcoxPerCmol","cube_Mean_Specific_Surface_Area_m2_per_g",0.393953780538812,0.0283182580327068
-"cube_effect_Lambda","cube_effect_Lambda",1,NA
-"cube_effect_Lambda","cube_effect_delGcoxPerCmol",-0.543726693516261,0.00156977556760518
-"cube_effect_Lambda","cube_Percent_Tot_Sand",-0.250160471054061,0.174688043536629

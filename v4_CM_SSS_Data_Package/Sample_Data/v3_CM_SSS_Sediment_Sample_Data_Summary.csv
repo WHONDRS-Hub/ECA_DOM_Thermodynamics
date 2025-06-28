@@ -1,5 +1,5 @@
-#Columns,31
-#Header_Rows,12
+#Columns,31,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+#Header_Rows,12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Field_Name,Sample_Name,IGSN,Material,Mean_ATP_nanomoles_per_L,Mean_ATP_picomoles_per_g,Mean_62948_Gravimetric_Moisture_g_per_g,Quartz_percent,Albite_percent,Microcline_percent,Pyroxene_percent,Calcite_percent,Dolomite_percent,Muscovite_percent,Smectite_percent,Chlorite_percent,Amphibole_percent,Apatite_percent,01395_C_percent_per_mg,01397_N_percent_per_mg,Percent_Fine_Sand,Percent_Med_Sand,Percent_Coarse_Sand,Percent_Tot_Sand,Percent_Clay,Percent_Silt,Mean_Fe_mg_per_kg,Mean_Fe_mg_per_L,Mean_Normalized_Respiration_Rate_mg_DO_per_H_per_L_sediment,Mean_Respiration_Rate_mg_DO_per_L_per_H,Mean_Specific_Surface_Area_m2_per_g,Mean_Missing_Reps
 Unit,N/A,N/A,N/A,nanomoles_per_liter,picomoles_per_gram,grams_per_gram,percent,percent,percent,percent,percent,percent,percent,percent,percent,percent,percent,percent,percent,percent,percent,percent,percent,percent,percent,milligrams_per_kilogram,milligrams_per_liter,milligrams_per_hour_per_liter_sediment,milligrams_per_liter_water_per_hour,square_meters_per_gram,N/A
 Unit_Basis,N/A,N/A,N/A,as_nanomoles_ATP_per_liter,as_picomoles_ATP_per_g_dry_weight,as_grams_Water_per_gram_Dry_Sediment,as_Quartz,as_Albite,as_Microcline,as_Pyroxene,as_Calcite,as_Dolomite,as_Muscovite,as_Smectite,as_Chlorite,as_Amphibole,as_Apatite,as_percent_Carbon_dry_weight,as_percent_Nitrogen_dry_weight,as_percent_of_dry_weight,as_percent_of_dry_weight,as_percent_of_dry_weight,as_percent_of_dry_weight,as_percent_of_dry_weight,as_percent_of_dry_weight,as_mg_Fe_per_kg_dry_weight,as_mg_Fe_per_L_water,as_rate_of_Oxygen_consumed_per_liter_sediment,as_rate_of_Oxygen_consumed,as_square_meter_surface_area_per_gram_sediment,N/A
@@ -75,11 +75,11 @@ N/A,CM_063_Sediment,10.58052/IEWDR01R4,Sediment,16.03,46.783,0.203,75.78,15.04,4
 N/A,CM_064_Sediment,10.58052/IEWDR01VR,Sediment,72.41,185.983,1.223,100,0,0,0,0,0,0,0,0,0,0,0.55,0.18,7.2,15.2,67.7,90.1,2.3,7.6,0.235,0.1,-26.405,-7.48,2.014,FALSE
 N/A,CM_065_Sediment,10.58052/IEWDR01ZQ,Sediment,15.687,48.843,0.347,97.44,0,0,0,0,0,0,2.56,0,0,0,0.31,0.1,14.2,52.1,26.9,93.2,4.9,1.9,0.971,0.485,-17.167,-4.813,11.569,FALSE
 N/A,CM_066_Sediment,10.58052/IEWDR01VU,Sediment,4.07,10.123,0.267,54.53,22.4,10.31,0,0,0,10.13,0,0.84,1.81,0,0.25,0.18,1.2,0.5,94.5,96.2,2.1,1.7,0.321,0.136,-1.248,-0.342,10.028,TRUE
-N/A,CM_068_Sediment,10.58052/IEWDR01VX,Sediment,3.713,35.403,-9999,70.15,8.81,4.72,0,0,0,16.33,0,0,0,0,1.97,0.35,14.3,0.9,6.9,22.1,26.9,51,16.559,3.023,-314.089,-19.267,57.538,TRUE
+N/A,CM_068_Sediment,10.58052/IEWDR01VX,Sediment,3.713,35.403,1.67,70.15,8.81,4.72,0,0,0,16.33,0,0,0,0,1.97,0.35,14.3,0.9,6.9,22.1,26.9,51,16.559,3.023,-314.089,-19.267,57.538,TRUE
 N/A,CM_069_Sediment,10.58052/IEWDR01W0,Sediment,72.377,197.83,0.26,67.07,8.46,7.61,0,0.11,0,6,0,0.16,0,0,2.35,0.24,5.9,5.5,83.3,94.7,3.3,2,0.531,0.263,-1780.386,-503.733,6.542,FALSE
 N/A,CM_070_Sediment,10.58052/IEWDR01W3,Sediment,12.547,44.397,0.363,68.63,15.11,4,0,0,0,10.52,0,0.2,1.54,0,0.41,0.15,37.2,46.1,4,87.3,3.4,9.3,0.771,0.386,-6.794,-1.903,3.452,FALSE
 N/A,CM_071_Sediment,10.58052/IEWDR01W6,Sediment,12.217,59.04,0.9,74.29,9.6,6.25,0,0,0,8.98,0,0,0.88,0,1.49,0.37,27.2,21.6,2.5,51.3,1.7,47,10.958,3.002,-271.17,-16.468,46.784,FALSE
-N/A,CM_072_Sediment,10.58052/IEWDR01W9,Sediment,28.843,232.347,1.003,51,6.19,4.88,0,0.15,0,22.41,0,0.7,0,0,1.71,0.3,11.6,4.7,1.2,17.5,44.5,38,-9999,-9999,-309.44,-18.863,99.061,TRUE
+N/A,CM_072_Sediment,10.58052/IEWDR01W9,Sediment,28.843,232.347,1.003,51,6.19,4.88,0,0.15,0,22.41,0,0.7,0,0,1.71,0.3,11.6,4.7,1.2,17.5,44.5,38,4.21,-9999,-309.44,-18.863,99.061,TRUE
 N/A,CM_073_Sediment,10.58052/IEWDR01WC,Sediment,12.79,34.27,0.84,68.84,17.49,0,0,0,0,12.76,0,0.54,0.37,0,0.24,0.21,5.7,2.6,87.1,95.4,0.4,4.2,0.217,0.109,-4.132,-1.153,4.419,TRUE
 N/A,CM_074_Sediment,10.58052/IEWDR01WF,Sediment,2.657,8.81,0.197,47.28,28.53,18.09,0,0,0,5.28,0,0,0.82,0,0.23,0.14,2.2,20.2,75.9,98.3,1.7,0,0.059,0.029,-7.208,-2.022,6.008,FALSE
 N/A,CM_075_Sediment,10.58052/IEWDR01WI,Sediment,22.753,80.447,0.36,100,0,0,0,0,0,0,0,0,0,0,0.96,0.1,59,26.1,1.4,86.5,3.8,9.7,2.015,0.94,-55.35,-15.633,10.907,TRUE
@@ -91,7 +91,7 @@ N/A,CM_080_Sediment,10.58052/IEWDR01WX,Sediment,8.265,149.055,3.663,59.92,0,0,0,
 N/A,CM_081_Sediment,10.58052/IEWDR01X0,Sediment,15.923,49.043,0.343,92.71,3.24,4.05,0,0,0,0,0,0,0,0,0.4,0.26,27.4,61.2,1.7,90.3,1.1,8.6,1.419,0.639,-19.613,-5.388,5.245,TRUE
 N/A,CM_082_Sediment,10.58052/IEWDR01X3,Sediment,17.227,51.107,-9999,96.15,0,3.85,0,0,0,0,0,0,0,0,1.08,0.07,51.7,34.9,7,93.6,2,4.4,0.681,0.316,-104.373,-29.093,7.004,TRUE
 N/A,CM_083_Sediment,10.58052/IEWDR01ZR,Sediment,10.453,34.347,0.303,88.68,4.43,4.28,0,0,0,0,2.62,0,0,0,0.29,0.08,3.7,12.8,78.7,95.2,4.3,0.5,0.909,0.438,-47.057,-13.26,-9999,FALSE
-N/A,CM_084_Sediment,10.58052/IEWDR01X6,Sediment,37.163,113.43,-9999,56.56,17.16,15.03,3.3,0,0,5.34,0,0.36,2.24,0,0.51,0.18,1.9,1.2,93.6,96.7,1.4,1.9,1.002,0.46,-11.696,-3.258,4.297,TRUE
+N/A,CM_084_Sediment,10.58052/IEWDR01X6,Sediment,37.163,113.43,0.41,56.56,17.16,15.03,3.3,0,0,5.34,0,0.36,2.24,0,0.51,0.18,1.9,1.2,93.6,96.7,1.4,1.9,1.002,0.46,-11.696,-3.258,4.297,TRUE
 N/A,CM_085_Sediment,10.58052/IEWDR01X9,Sediment,30.697,92.06,0.34,76.19,14.89,3.58,0,0,0,2.87,0,0.18,2.3,0,0.39,0.21,34.6,39,3.4,77,3.1,19.9,3.817,1.816,-36.366,-10.147,6.011,FALSE
 N/A,CM_086_Sediment,10.58052/IEWDR01ZS,Sediment,46.895,196.395,0.75,24.08,15.65,3.81,0,0,0,7.45,44.98,0,0,0,1.64,0.32,75.3,13.1,5.5,93.9,6.1,0,8.776,2.722,-673.303,-41.067,-9999,TRUE
 N/A,CM_087_Sediment,10.58052/IEWDR01ZT,Sediment,8.86,38.7,0.497,35.81,25.91,8.58,2.54,0,0,6.04,16.76,0,0,0,0.86,0.22,50.8,6,2.2,59,5.7,35.3,7.415,2.879,-48.733,-2.977,-9999,FALSE
