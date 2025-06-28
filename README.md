@@ -1,6 +1,6 @@
 #### Data and scripts associated with “Sediment moisture content modulates DOM thermodynamic regulation of sediment oxygen consumption”
 
-Authors: Vanessa A. Garayburu-Caruso1,2*, Robert E. Danczak1, Dillman Delgado1, Amy E. Goldman1, Brieanne Forbes1, Maggi M. Laan1, Hyun-Seob Song2, Malak Tfaily3, Sarah S. Roley2, Jianqiu Zheng1, James C. Stegen1,2*
+Authors: Vanessa A. Garayburu-Caruso*, Robert E. Danczak, Dillman Delgado, Amy E. Goldman, Brieanne Forbes, Maggi M. Laan, Hyun-Seob Song, Malak Tfaily, Sarah S. Roley, Jianqiu Zheng, James C. Stegen*
 
 ## Summary
 This data package is associated with the publication “Sediment moisture content modulates DOM thermodynamic regulation of sediment oxygen consumption” submitted to Nature Communications.
