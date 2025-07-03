@@ -9,7 +9,9 @@ library(ggpubr) # For to combine plots
 library(dplyr) # For reorganization
 library(stringr) # For string manipulation
 # ==== Defining paths and working directories ======
-input = 'C:/Users/gara009/OneDrive - PNNL/Documents - Core Richland and Sequim Lab-Field Team/Data Generation and Files/ECA/FTICR/03_ProcessedData/CoreMS/EC_Data_Processed_FTICR/Processed_with_XML/'
+
+#Get raw XML data from () and run through CoreMS (github). The output form that script will be the input to this one. 
+input = 'Mol and Data files from CoreMS'
 
 github = 'C:/Users/gara009/OneDrive - PNNL/Documents/GitHub/ECA_DOM_Thermodynamics/'
 out_plots = paste0(github,'CoreMS/Plots/')
