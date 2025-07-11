@@ -18,16 +18,14 @@ library(corrplot)
 library(Hmisc)
 library(stringr)
 # ==== Defining paths and working directories ======
-github = 'C:/Users/gara009/OneDrive - PNNL/Documents/GitHub/ECA_DOM_Thermodynamics/'
-data_path = paste0(github,'Data/')
-figure_path = paste0(github,'Figures/')
+figure_path = 'Figures/'
 
 # ====== Read in data ======
-data = read.csv(paste0(data_path,'Medians_of Median_molecular_properties_per_site_and_treatment_unique_formulas.csv'))
+data = read.csv('Data/Medians_of_Median_molecular_properties_per_site_and_treatment_unique_formulas.csv')
 
 row.names(data) = paste0(data$site,'_',data$Treatment)
 
-sample_data = read_csv(paste0(github,'v4_CM_SSS_Data_Package/Sample_Data/v3_CM_SSS_Sediment_Sample_Data_Summary.csv'),comment = '#', na = c('N/A', -9999)) %>%
+sample_data = read_csv('v4_CM_SSS_Data_Package_1/Sample_Data/v3_CM_SSS_Sediment_Sample_Data_Summary.csv',comment = '#', na = c('N/A', -9999)) %>%
   slice(-(1:11)) %>%  # Remove the first 11 rows
   mutate_at(vars(-Sample_Name, -Field_Name, -IGSN, -Material), as.numeric) %>%  
   dplyr::select(site = Sample_Name, Mean_ATP_picomoles_per_g,
@@ -40,7 +38,7 @@ sample_data = read_csv(paste0(github,'v4_CM_SSS_Data_Package/Sample_Data/v3_CM_S
 sample_data$site = gsub('CM','EC',sample_data$site)
 sample_data$site = gsub('_Sediment','',sample_data$site)
 
-field_metadata = read.csv(paste0(github,'EC_Data_Package/EC_Field_Metadata.csv')) %>%
+field_metadata = read.csv('EC_Data_Package/EC_Field_Metadata.csv') %>%
   dplyr::select(site = Parent_ID,State)
 
 ecoregions = read.csv('Data/EC_Ecoregions.csv')%>%
@@ -598,6 +596,7 @@ site_lda_data <- data.frame(
   stringsAsFactors = FALSE
 ) %>%
   left_join(site_metadata, by = "site") %>%
+  dplyr::select(-State)%>%
   # Remove any rows with missing values
   na.omit()
 
