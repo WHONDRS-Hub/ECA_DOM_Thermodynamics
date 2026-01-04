@@ -103,6 +103,35 @@ cube_treatment_effects = treatment_effects %>%
 
 dat_field = merge(cube_treatment_effects,cube_field_means, by = 'site') %>%
   column_to_rownames('site')
+# ==== Correlation matrix =====
+cor_matrix <- cor(dat_field, use = "complete.obs", method = "pearson")
+
+# Print correlation matrix
+print(cor_matrix)
+
+# Optional: Visualize correlation matrix
+library(corrplot)
+corrplot(cor_matrix, 
+         method = "color",
+         type = "upper",
+         order = "hclust",
+         tl.cex = 0.8,
+         tl.col = "black",
+         tl.srt = 45)
+
+# Alternative visualization with ggplot2
+library(ggcorrplot)
+ggcorrplot(cor_matrix, 
+           hc.order = TRUE,
+           type = "lower",
+           lab = TRUE,
+           lab_size = 3,
+           method = "circle",
+           colors = c("blue", "white", "red"),
+           title = "Pearson Correlation Matrix",
+           ggtheme = theme_bw)
+
+
 
 # ==== Creating color objects for heat map =====
 # For field data
