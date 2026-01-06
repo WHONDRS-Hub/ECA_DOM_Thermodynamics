@@ -17,6 +17,7 @@ if(!require(corrplot)) install.packages("corrplot")
 library(corrplot)
 library(Hmisc)
 library(stringr)
+library(gridExtra)
 # ==== Defining paths and working directories ======
 figure_path = 'Figures/'
 
@@ -60,14 +61,16 @@ names(sites) = 'site'
 explanatory_data = merge(sample_data,field_metadata, by = 'site')
 explanatory_data = merge(explanatory_data,sites, by = 'site')
 
-field_sample_data = merge(sample_data, sites, by = 'site')
-site_metadata = explanatory_data
+field_sample_data = merge(sample_data, sites, by = 'site')%>%
+  dplyr::select(-Mean_Gravimetric_Moisture_g_per_g)
+site_metadata = explanatory_data %>%
+  dplyr::select(-State,-Mean_Gravimetric_Moisture_g_per_g)
 
 # ===== Calculations ======
 # Calculate treatment effects size
 treatment_effects <- dom_data %>%
   filter(Treatment %in% c("Wet", "Dry")) %>%
-  select(site, Treatment, starts_with("Median_")) %>%
+  dplyr::select(site, Treatment, starts_with("Median_")) %>%
   pivot_wider(
     id_cols = site,
     names_from = Treatment,
@@ -77,7 +80,7 @@ treatment_effects <- dom_data %>%
     effect_delGcoxPerCmol = (Median_delGcoxPerCmol_Wet / Median_delGcoxPerCmol_Dry),
     effect_Lambda = (Median_Lambda_Wet / Median_Lambda_Dry)
   ) %>%
-  select(site, starts_with("effect_"))
+  dplyr::select(site, starts_with("effect_"))
 
 treatment_df = treatment_effects
 # Prepare the effect matrix for heatmap
@@ -95,7 +98,7 @@ cube_field_means = field_sample_data %>%
   mutate(across(where(is.numeric), cube_root)) %>% # cube root transform data
   rename_with(where(is.numeric), .fn = ~ paste0("cube_", .x)) %>% 
   #column_to_rownames("Sample_Name") %>%
-  select(-contains("per_L")) # remove per_L data, analysis ran on _per_kg
+  dplyr::select(-contains("per_L")) # remove per_L data, analysis ran on _per_kg
 
 cube_treatment_effects = treatment_effects %>%  
   mutate(across(where(is.numeric), cube_root)) %>% # cube root transform data
@@ -136,18 +139,15 @@ ggcorrplot(cor_matrix,
 # ==== Creating color objects for heat map =====
 # For field data
 site_annotation <- site_metadata %>% 
-  select(
+  dplyr::select(
     site, 
     Ecoregion,
-    State,
     Mean_ATP_picomoles_per_g,
     Mean_Specific_Surface_Area_m2_per_g,
     C_percent_per_mg,
     N_percent_per_mg,
     Percent_Tot_Sand,
-    Mean_Fe_mg_per_kg,
-    Mean_Gravimetric_Moisture_g_per_g
-  ) %>%
+    Mean_Fe_mg_per_kg) %>%
   column_to_rownames("site")
 
 # Ensure annotations match the order of sites in the heatmap
@@ -247,39 +247,6 @@ p44 = ggplot(site_cluster_data, aes(x = factor(cluster), fill = Ecoregion)) +
        x = "Cluster",
        y = "Proportion")
 
-p45 = ggplot(site_cluster_data, aes(x = factor(cluster), fill = State)) +
-  geom_bar(position = "fill") +
-  scale_fill_manual(values = categorical_colors$State) +
-  theme_bw() +
-  labs(title = 'B',
-       x = "Cluster",
-       y = "Proportion")
-library(gridExtra)
-# Arrange all plots in a grid - adjust layout as needed
-arranged_plots <- grid.arrange(
-  p44, p45,
-  ncol = 1
-)
-
-
-# Save as PDF and PNG
-ggsave(
-  filename = "Figures/FigureS2_Ecoregion_and_State_clusters.pdf",
-  plot = arranged_plots,
-  width = 10,
-  height = 14,
-  units = "in",
-  dpi = 300
-)
-
-ggsave(
-  filename = "Figures/FigureS2_Ecoregion_and_State_clusters.png",
-  plot = arranged_plots,
-  width = 10,
-  height = 14,
-  units = "in",
-  dpi = 300
-)
 
 # Visualize numerical variables by clusters with higher Pearson correlation coefficients to the effects using field data 
 
@@ -335,15 +302,6 @@ p6 <- ggplot(site_cluster_data, aes(x = factor(cluster), y = N_percent_per_mg)) 
        y = "Nitrogen (%)",
        fill = "Cluster")
 
-p7 <- ggplot(site_cluster_data, aes(x = factor(cluster), y = Mean_Gravimetric_Moisture_g_per_g)) +
-  geom_boxplot(aes(fill = factor(cluster))) +
-  scale_fill_manual(values = c("1" = "#74C0FC", "2" = "#FFD43B", "3" = "#FF8FAB")) +
-  theme_bw() + 
-  theme(legend.position="none") + 
-  theme(aspect.ratio=1) +
-  labs( x = "Cluster",
-       y = "Moisture (g/g)",
-       fill = "Cluster")
 
 # Doing some stats before exporting 
 # if(!require(PMCMRplus)) install.packages("PMCMRplus")
@@ -426,12 +384,12 @@ p3_enhanced <- add_kw_stats(p3, site_cluster_data, "Mean_ATP_picomoles_per_g")
 p4_enhanced <- add_kw_stats(p4, site_cluster_data, "Percent_Tot_Sand")
 p5_enhanced <- add_kw_stats(p5, site_cluster_data, "Mean_Fe_mg_per_kg")
 p6_enhanced <- add_kw_stats(p6, site_cluster_data, "N_percent_per_mg")
-p7_enhanced <- add_kw_stats(p7, site_cluster_data, "Mean_Gravimetric_Moisture_g_per_g")
+
 
 # Arrange all plots in a grid - adjust layout as needed
 grid_arranged_plots <- grid.arrange(
   p1_enhanced, p2_enhanced, p3_enhanced, 
-  p4_enhanced, p5_enhanced, p6_enhanced,p7_enhanced,
+  p4_enhanced, p5_enhanced, p6_enhanced,
   ncol = 2
 )
 
@@ -625,7 +583,7 @@ site_lda_data <- data.frame(
   stringsAsFactors = FALSE
 ) %>%
   left_join(site_metadata, by = "site") %>%
-  dplyr::select(-State)%>%
+  dplyr::select(-Ecoregion)%>%
   # Remove any rows with missing values
   na.omit()
 
@@ -643,9 +601,8 @@ lda_model <- lda(cluster ~
                    C_percent_per_mg +
                    N_percent_per_mg +
                    Percent_Tot_Sand +
-                   Mean_Fe_mg_per_kg +
-                   Mean_Gravimetric_Moisture_g_per_g,
-                 data = site_lda_data)
+                   Mean_Fe_mg_per_kg, 
+                   data = site_lda_data)
 
 # Print LDA results
 cat("\n===== LDA RESULTS =====\n")

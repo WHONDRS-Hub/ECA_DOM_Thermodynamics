@@ -11,7 +11,7 @@ library(readr)      # For reading CSV files
 library(stringr)    # For string manipulation
 library(segmented) # For segmented regression
 # ====== Define paths and read in data ======
-github = 'C:/Users/gara009/OneDrive - PNNL/Documents/GitHub/ECA_DOM_Thermodynamics/'
+github = getwd()
 data_path = paste0(github, 'Data/')
 figure_path = paste0(github,'Figures/')
 
@@ -455,7 +455,7 @@ cat("\nSecond Derivative Threshold:", round(moisture_threshold, 3),
 # ---- Plot A: Moisture Threshold Plot with GAM Fit ----
 p1 <- ggplot() +
   # Original data points
-  geom_point(data = dom_data, aes(x = moisture, y = resp_cube, color = site),
+  geom_point(data = dom_data, aes(x = moisture, y = resp_cube),
              alpha = 0.5, size = 3) +
   # GAM fit with confidence band
   geom_line(data = pred_data_gibbs, aes(x = moisture, y = fit),
@@ -560,7 +560,7 @@ p2 <- ggplot(dom_data, aes(x = gibbs, y = resp_cube, color = moisture_regime)) +
 # Combine plots
 combined_plot <- p1 + p2 +
   plot_layout(guides = "collect") &
-  theme(legend.position = "bottom",
+  theme(legend.position = "bottomright",
         legend.text = element_text(size = 14),      # Style the legend
         legend.title = element_text(size = 16))
 
