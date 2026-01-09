@@ -46,12 +46,10 @@ pet_raw[pet_raw >= 65535] <- NA
 et_raw [et_raw  >= 65535] <- NA
 npp_raw[npp_raw >= 32767] <- NA
 
-# ---- scaling (same as before; verify with global() if you want) ----
+
 pet <- pet_raw * 0.1
 et  <- et_raw  * 0.1
 
-# NPP: handle like we did before — DO NOT apply 0.0001 unless your ranges are 0–32766
-# quick auto-check: if max > 100, assume unscaled ints and multiply by 0.0001
 if (global(npp_raw[[1]], "max", na.rm=TRUE)[1,1] > 100) {
   npp <- npp_raw * 0.0001
 } else {

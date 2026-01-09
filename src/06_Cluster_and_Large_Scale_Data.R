@@ -91,22 +91,20 @@ dat_field = merge(cube_treatment_effects, cube_field_means, by = "site") %>%
   column_to_rownames("site") %>%
   dplyr::select(-code)
 
-# ==== Correlation matrix =====
+
 # ==== Correlation matrix =====
 cor_matrix <- cor(dat_field, use = "complete.obs", method = "pearson")
 print(cor_matrix)
 
-# ---- Make nicer (shorter) labels for plotting ----
 pretty_names <- colnames(cor_matrix) %>%
   stringr::str_remove("^cube_") %>%     # drop cube_ prefix
   stringr::str_remove("^effect_") %>%   # drop effect_ prefix (if present)
   stringr::str_replace_all("_", " ") %>%# underscores -> spaces
   stringr::str_wrap(width = 10)         # wrap long labels onto multiple lines
 
-# Apply the pretty names to BOTH axes
 dimnames(cor_matrix) <- list(pretty_names, pretty_names)
 
-# Plot A (ggplot-based correlation matrix)
+# Plot A 
 pA <- ggcorrplot(
   cor_matrix,
   method = "square",
@@ -118,7 +116,6 @@ pA <- ggcorrplot(
   theme(
     plot.title = element_blank(),
     
-    # Make x labels readable
     axis.text.x = element_text(
       size = 7,
       angle = 45,      # try 60 or 90 if still tight
@@ -127,7 +124,6 @@ pA <- ggcorrplot(
     ),
     axis.text.y = element_text(size = 7),
     
-    # Give the x labels room (important in the composite)
     plot.margin = margin(t = 5, r = 5, b = 25, l = 5)
   )
 
@@ -157,7 +153,6 @@ print(table(site_lda_data$cluster))
 cat("\nNumber of sites per cluster:\n")
 print(site_lda_data %>% count(cluster))
 
-# NOTE: keeping your change to NPP/ET variable names
 lda_model <- lda(cluster ~
                    slope +
                    elevation +
@@ -233,20 +228,14 @@ pB <- ggplot(lda_plot_data, aes(x = LD1, y = LD2, color = cluster, fill = cluste
 ggsave("Figures/Figure_S3_LDA_discriminant_space.png", plot = pB, width = 8, height = 6, dpi = 300)
 ggsave("Figures/Figure_S3_LDA_discriminant_space.pdf", plot = pB, width = 8, height = 6, dpi = 300)
 
-# Variable importance (optional)
 var_importance <- lda_coefficients %>%
   mutate(
     Total_importance = sqrt(LD1^2 + LD2^2)
   ) %>%
   arrange(desc(Total_importance))
 
-# ============================================================
-# C) Boxplots of ALL numeric variables by cluster + K-W stats
-#   - Annotation: "K-W H = , p ="
-#   - Variable name on Y-AXIS (NOT as title)
-# ============================================================
+# ====== Boxplots =====
 
-# Choose variables to plot (all numeric columns, excluding ID-ish columns)
 vars_to_plot <- site_lda_data %>%
   dplyr::select(where(is.numeric)) %>%
   dplyr::select(-any_of(c("code"))) %>%
@@ -279,7 +268,6 @@ kw_table <- purrr::map_dfr(vars_to_plot, function(v) {
 print(kw_table)
 write.csv(kw_table, file = "Figures/S3_KruskalWallis_stats_all_variables.csv", row.names = FALSE)
 
-# Build one plot per variable (annotated, small-format theme for multipanel)
 plot_list <- vector("list", length(vars_to_plot))
 
 for (i in seq_along(vars_to_plot)) {
@@ -330,11 +318,8 @@ for (i in seq_along(vars_to_plot)) {
   plot_list[[i]] <- p_box
 }
 
-# ============================================================
-# SINGLE-PAGE composite: A + B on top, C (all boxplots) below
-# ============================================================
+# ==== Export figure =============================================================
 
-# --- Make an A/B panel (top row) ---
 AB_panel <- cowplot::plot_grid(
   pA, pB,
   labels = c("A", "B"),
@@ -344,9 +329,7 @@ AB_panel <- cowplot::plot_grid(
 )
 
 
-# --- Make the C panel (grid of ALL boxplots) ---
-# Choose columns in C grid:
-# More columns -> smaller panels. Adjust if needed.
+
 ncol_C <- 4
 
 C_panel <- cowplot::plot_grid(
@@ -355,13 +338,12 @@ C_panel <- cowplot::plot_grid(
   align = "hv"
 )
 
-# Add a big "C" label to the C panel
+
 C_panel_labeled <- cowplot::ggdraw(C_panel) +
   cowplot::draw_label("C", x = 0.01, y = 0.99, hjust = 0, vjust = 1,
                       fontface = "bold", size = 18)
 
-# --- Final single-page composite ---
-# Give C more vertical space than AB
+
 final_single_page <- cowplot::plot_grid(
   AB_panel,
   C_panel_labeled,
@@ -369,16 +351,14 @@ final_single_page <- cowplot::plot_grid(
   rel_heights = c(1, 1.7)
 )
 
-# IMPORTANT:
-# If you truly have a lot of variables, this *will* be dense.
-# Save as a LARGE page so everything fits on one page.
+
 ggsave(
   filename = "Figures/Figure_S3_SINGLE_PAGE_COMPOSITE_A_B_C.pdf",
   plot = final_single_page,
   width = 16, height = 20, units = "in", dpi = 300
 )
 
-# Optional PNG (can be huge)
+
 ggsave(
   filename = "Figures/Figure_S3_SINGLE_PAGE_COMPOSITE_A_B_C.png",
   plot = final_single_page,

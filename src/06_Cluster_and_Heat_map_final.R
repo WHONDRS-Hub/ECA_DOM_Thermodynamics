@@ -642,7 +642,6 @@ lda_plot_data <- data.frame(
 lda_stats <- list(
   # Proportion of variance explained by each LD
   prop_var = lda_model$svd^2 / sum(lda_model$svd^2),
-  # Classification accuracy (if you have predictions)
   accuracy = sum(lda_predictions$class == site_lda_data$cluster) / nrow(site_lda_data)
 )
 

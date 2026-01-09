@@ -17,13 +17,6 @@ geospatial = read.csv(paste0(github,'v4_RCSFA_Extracted_Geospatial_Data_2025-01-
   dplyr::select(site,slope,elevation = elevws,AridityWs,Pct_shrub= pctshrb2019ws,precipitation = PrecipSite,PctFst,PctAg) %>%
   distinct(site, .keep_all = TRUE)
 
-# et_npp = read.csv(paste0(github,'Example_Code/v4_RCSFA_Extracted_NPP_ET_Correct_2026-01-02.csv')) %>%
-#   group_by(site) %>%
-#   summarise(
-#     NPP_mean_kgC_m2_yr = mean(NPP_mean_kgC_m2_yr, na.rm = TRUE),
-#     ET_mean_kg_m2_yr   = mean(ET_mean_kg_m2_yr, na.rm = TRUE),
-#     .groups = "drop"
-#   )
 
 et_npp = read.csv(paste0(github,'Example_Code/watershed_pet_et_npp_samplingwindow_mean_2026-01-04.csv')) %>%
   dplyr::select(comid,
@@ -35,9 +28,6 @@ et_npp = read.csv(paste0(github,'Example_Code/watershed_pet_et_npp_samplingwindo
   dplyr::select(-comid)
 
 # ==== Merge data  ===
-# data_merged = sample_data %>%
-#   left_join(geospatial, by='site') %>%
-#   left_join(et_npp %>% dplyr::select(site,NPP_mean_kgC_m2_yr, ET_mean_kg_m2_yr), by='site')
 data_merged = sample_data %>%
   left_join(geospatial, by='site') %>%
   left_join(et_npp , by='site')
