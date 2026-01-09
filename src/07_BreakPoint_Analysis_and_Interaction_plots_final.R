@@ -10,8 +10,10 @@ library(patchwork)  # For combining plots
 library(readr)      # For reading CSV files
 library(stringr)    # For string manipulation
 library(segmented) # For segmented regression
+library(lme4)       # For mixed effects models
+library(tidyverse)   # For data manipulation and visualization
 # ====== Define paths and read in data ======
-github = getwd()
+github = paste0(getwd(),'/')
 data_path = paste0(github, 'Data/')
 figure_path = paste0(github,'Figures/')
 
@@ -43,7 +45,7 @@ sample_data = read_csv(paste0(github, 'EC_Data_Package/Sample_Data/EC_Sediment_S
          Median_Respiration_Rate_mg_DO_per_kg_per_H, Median_Extractable_NPOC_mg_per_kg)
 
 # Read the main data file
-data = read.csv(paste0(data_path, 'Medians_of Median_molecular_properties_per_site_and_treatment_unique_formulas.csv'))
+data = read.csv(paste0(data_path, 'Medians_of_Median_molecular_properties_per_site_and_treatment_unique_formulas.csv'))
 row.names(data) = paste0(data$site, '_', data$Treatment)
 
 # Set up data
@@ -499,6 +501,7 @@ p1 <- ggplot() +
 # ---- Plot B: DOM Thermodynamics Split by Moisture Regime ----
 library(ggplot2)
 library(lmerTest)
+library(MuMIn)
 
 # Get your model results (simpler than before)
 below_mixed <- lmer(resp_cube ~ gibbs + (1|site),
@@ -560,7 +563,7 @@ p2 <- ggplot(dom_data, aes(x = gibbs, y = resp_cube, color = moisture_regime)) +
 # Combine plots
 combined_plot <- p1 + p2 +
   plot_layout(guides = "collect") &
-  theme(legend.position = "bottomright",
+  theme(legend.position = "bottom",
         legend.text = element_text(size = 14),      # Style the legend
         legend.title = element_text(size = 16))
 
@@ -575,3 +578,4 @@ ggsave("Figures/Figure4_Thermodynamics_vs_Respiration.png",
 ggsave("Figures/Figure4_Thermodynamics_vs_Respiration.pdf", 
        combined_plot, 
        width = 12, height = 6)
+
