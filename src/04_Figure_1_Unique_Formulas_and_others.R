@@ -8,7 +8,7 @@ library(ggpubr) # For to combine plots
 library(dplyr) # For reorganization
 library(stringr) # For string manipulation
 # ==== Defining paths and working directories ======
-github = 'C:/Users/gara009/OneDrive - PNNL/Documents/GitHub/ECA_DOM_Thermodynamics/'
+github = '/GitHub/ECA_DOM_Thermodynamics/'
 data_path = paste0(github,'Data/')
 figure_path = paste0(github,'Figures/')
 # ====== Read in and clean up data ======
