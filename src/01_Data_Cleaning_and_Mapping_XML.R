@@ -11,9 +11,9 @@ library(stringr) # For string manipulation
 # ==== Defining paths and working directories ======
 
 #Get raw XML data from () and run through CoreMS (github). The output form that script will be the input to this one. 
-input = 'Mol and Data files from CoreMS'
+input = 'Mol and Data files from CoreMS downloaded from ESS-DIVE'
 
-github = 'C:/Users/gara009/OneDrive - PNNL/Documents/GitHub/ECA_DOM_Thermodynamics/'
+github = '/GitHub/ECA_DOM_Thermodynamics/'
 out_plots = paste0(github,'CoreMS/Plots/')
 out_data = paste0(github,'CoreMS/Data/')
 
