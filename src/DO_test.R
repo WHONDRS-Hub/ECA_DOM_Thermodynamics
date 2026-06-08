@@ -177,7 +177,7 @@ stats_df <- full_data2 %>%
     y = c(13.0, 11.8)    # separate label positions
   )
 
-ggplot(
+p1 = ggplot(
   full_data2,
   aes(x = Measured_DO, y = Mixed_DO_Calculated, color = Theoretical)
 ) +
@@ -200,3 +200,102 @@ ggplot(
   scale_x_continuous(limits = c(0, 13)) +
   scale_y_continuous(limits = c(5.5, 13.5)) +
   theme_bw()
+
+
+# subset to theoretical only
+theory_only <- full_data2 %>%
+  filter(Theoretical == "yes")
+
+# fit model
+mod_theory <- lm(Mixed_DO_Calculated ~ Measured_DO, data = theory_only)
+
+# extract R2
+r2_theory <- summary(mod_theory)$r.squared
+
+# make label
+r2_label <- paste0("R² = ", round(r2_theory, 3))
+
+# plot
+p_theory <- ggplot(
+  theory_only,
+  aes(
+    x = Measured_DO,
+    y = Mixed_DO_Calculated
+  )
+) +
+  
+  # points
+  geom_point(
+    color = "#1f9aa0",
+    size = 3,
+    alpha = 0.9
+  ) +
+  
+  # regression line
+  geom_smooth(
+    method = "lm",
+    se = FALSE,
+    color = "black",
+    linewidth = 1
+  ) +
+  
+  # 1:1 line
+  geom_abline(
+    slope = 1,
+    intercept = 0,
+    linetype = "dashed",
+    color = "red",
+    alpha = 0.7
+  ) +
+    annotate(
+    "text",
+    x = 8.6,
+    y = 0.6,
+    label = r2_label,
+    size = 5,
+    fontface = "bold",
+    hjust = 1
+  ) +
+  
+  labs(
+    x = expression("Measured O"[2]*" (mg L"^-1*")"),
+    y = expression("Mixed O"[2]*" Calculated (mg L"^-1*")")
+  ) +
+  
+  coord_cartesian(
+    xlim = c(-0.5, 9),
+    ylim = c(-0.5, 9)
+  ) +
+  
+  scale_x_continuous(
+    breaks = seq(0, 10, by = 2.5)
+  ) +
+  
+  scale_y_continuous(
+    breaks = seq(0, 10, by = 2.5)
+  ) +
+  
+  theme_bw(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank()
+  )
+
+p_theory
+
+ggsave(
+  "Figures/FigureS4.png",
+  p_theory,
+  width = 10,
+  height = 10,
+  dpi = 300
+)
+
+ggsave(
+  "Figures/FigureS4.pdf",
+  p_theory,
+  width = 10,
+  height = 10,
+  device = cairo_pdf
+)
+
