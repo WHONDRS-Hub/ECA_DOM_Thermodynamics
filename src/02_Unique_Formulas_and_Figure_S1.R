@@ -6,7 +6,7 @@ library(tidyr)
 library(stringr) # For string manipulation
 
 # ==== Working directories =====
-github = 'C:/Users/gara009/OneDrive - PNNL/Documents/GitHub/ECA_DOM_Thermodynamics/'
+github = '/GitHub/ECA_DOM_Thermodynamics/'
 data_path = paste0(github,'Data/')
 figure_path = paste0(github,'Figures/')
 # ====== Read in and clean up data ======
