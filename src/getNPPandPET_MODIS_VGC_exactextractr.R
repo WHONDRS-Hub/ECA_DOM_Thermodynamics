@@ -5,9 +5,9 @@ library(dplyr)
 library(stringr)
 
 # ---- USER SETTINGS ----
-ws_path   <- "C:/Users/gara009/OneDrive - PNNL/Documents/GitHub/Geospatial_variables/Example_Code/shape/v4_RCSFA.shp"
+ws_path   <- "/GitHub/Geospatial_variables/Example_Code/shape/v4_RCSFA.shp"
 id_col    <- "comid"
-modis_dir <- "C:/Users/gara009/OneDrive - PNNL/Documents/GitHub/Geospatial_variables/Example_Code/data/MODIS 2022-2023"
+modis_dir <- "/GitHub/Geospatial_variables/Example_Code/data/MODIS 2022-2023"
 
 out_annual_csv <- sprintf("watershed_pet_et_npp_annual_2022_2023_%s.csv", Sys.Date())
 out_mean_csv   <- sprintf("watershed_pet_et_npp_samplingwindow_mean_%s.csv", Sys.Date())
