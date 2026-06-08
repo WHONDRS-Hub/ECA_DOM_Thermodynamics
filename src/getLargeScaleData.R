@@ -3,9 +3,9 @@ library(tidyverse)
 library(dplyr) # For reorganization
 library(stringr) # For string manipulation
 # ==== Defining paths and working directories ======
-github = 'C:/Users/gara009/OneDrive - PNNL/Documents/GitHub/Geospatial_variables/'
+github = '/GitHub/Geospatial_variables/'
 # ====== Read in data ======
-comids =  read.csv("C:/Users/gara009/OneDrive - PNNL/Documents/GitHub/Geospatial_variables/Example_Code/v4_RCSFA_Geospatial_Data_Package/v4_RCSFA_Geospatial_Site_Information.csv")%>%
+comids =  read.csv("/GitHub/Geospatial_variables/Example_Code/v4_RCSFA_Geospatial_Data_Package/v4_RCSFA_Geospatial_Site_Information.csv")%>%
 dplyr::select(site = Site_ID, comid = COMID)
 
 sample_data = read_csv(paste0('EC_Data_Package/EC_Field_Metadata.csv'),comment = '#', na = c('N/A', -9999)) %>%
