@@ -1,0 +1,141 @@
+Column_or_Row_Name,Unit,Definition,Data_Type,Term_Type,Missing_Value_Code,Reported_Precision
+AI,N/A,"Aromaticity index calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,0.00000001
+AI.mean,N/A,Mean aromaticity index for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+AI.median,N/A,Median aromaticity index for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+AI.sd,N/A,Standard deviation aromaticity index for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+AI_Mod,N/A,"Modified aromaticity index calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,0.000000001
+AI_Mod.mean,N/A,Mean modified aromaticity index for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+AI_Mod.median,N/A,Median modified aromaticity index for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+AI_Mod.sd,N/A,Standard deviation modified aromaticity index for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+AIC,N/A,Akaike Information Criterion value used to compare candidate generalized additive models. Lower values indicate better relative model support.,numeric,column_header,-9999,0.0001
+AridityWs,N/A,"Watershed aridity index associated with each sampling location, extracted from the Global Aridity Index and Potential Evapotranspiration Database, Version 3 (Zomer and Trabucco, 2022)",numeric,column_header,NA,0.0000001
+bs1_class,N/A,"Boundaries used to assign compound classes to molecular formula. Boundary sets 1 are Van Krevelen-based (Kim et al., 2003).",text,column_header,N/A,-9999
+bs2_class,N/A,"Boundaries used to assign compound classes to molecular formula. Boundary sets 2 are Van Krevelen-based (Bailey et al., 2017).",text,column_header,N/A,-9999
+bs3_class,N/A,"Boundaries used to assign compound classes to molecular formula. Boundary sets  3 further integrate stoichiometry to assign modified compound classes (Rivas-Urbach et al., 2018).",text,column_header,N/A,-9999
+C,N/A,Carbon atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+Calculated_Mass,mass to charge ratio,Calculated ionic mass for the assigned molecular formula. The units of mass to charge ratio is commonly denoted as m/z.,numeric,column_header,-9999,0.0001
+Calibrated_Mass,mass to charge ratio,Ionic mass of a peak after calibration in CoreMS. The units of mass to charge ratio is commonly denoted as m/z.,numeric,column_header,-9999,0.0001
+Column_or_Row_Name,N/A,Column or row headers from each tabular file (csv or tsv) in the dataset.,text,column_header,N/A,-9999
+Column_or_Row_Name_Position,N/A,"The location of the column or row that contains the header names (i.e., column name or row name). The count used to identify the location assumes the numbering begins at 1 (rather than 0) and excludes columns or rows that begin with ""#"". Most data in this data package is oriented in columns, so this field indicates the tabular location of the row that holds the column names (e.g., If row 1 has the column headers, row 2 has the units, and row 3 has the data values, then this value would be 1 - to indicate the location of the column header row).",numeric,column_header,-9999,1
+Data_Type,N/A,Type of data (numeric; text; date; time; datetime).,text,column_header,N/A,-9999
+DBE.mean,N/A,Mean double bond equivalent or degree of unsaturation for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.000001
+DBE.median,N/A,Median double bond equivalent or degree of unsaturation for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.1
+DBE.sd,N/A,Standard deviation double bond equivalent or degree of unsaturation for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.000001
+DBE_1,N/A,"Double bond equivalent or degree of unsaturation calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,1
+DBE_AI,N/A,"The minimum number of C-C double bonds plus rings in a common molecular structure containing heteroatoms. Calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,1
+DBE_O,N/A,"Double bond equivalent minus Oxygen calculated as per Koch and Dittmar (2006, 2016).",numeric,column_header,-9999,1
+DBE_O.mean,N/A,Mean double bond equivalent minus oxygen for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+DBE_O.median,N/A,Median double bond equivalent minus oxygen for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.1
+DBE_O.sd,N/A,Standard deviation double bond equivalent minus oxygen for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.000001
+Definition,N/A,Description of the information in a given column or row in the dataset.,text,column_header,N/A,-9999
+delGcox0PerCmol,kJ per C mol,Gibbs free energy of the carbon oxidation half reaction under standard conditions (pH = 0). Calculated as  per LaRowe and Van Cappellen (2011).,numeric,column_header,-9999,0.0000001
+delGcoxPerCmol,kJ per C mol,Gibbs free energy of the carbon oxidation half reaction at pH 7. Calculated as per Song et al. (2020).,numeric,column_header,-9999,0.00001
+delGd,kJ per Compound mol,Gibbs free energy of the carbon oxidation half reaction per compound mol at pH 7. Calculated as per Song et al. (2020).,numeric,column_header,-9999,0.0001
+delGd0,kJ per Compound mol,Gibbs free energy of the carbon oxidation half reaction per compound mol at pH 0. Calculated as per Song et al. (2020).,numeric,column_header,-9999,0.1
+Dev_explained,N/A,Deviance explained by the generalized additive model.,numeric,column_header,-9999,0.0000001
+EC_*,N/A,Sample name with rows representing peak intensities reflected as presence absence.,numeric,column_header,-9999,0.1
+elevation,meters,"Watershed elevation associated with each sampling location, extracted from NHDPlusV2.1 using the nhdplusTools R package (Blodgett and Johnson, 2022).",numeric,column_header,NA,0.0001
+Error_ppm,parts per million,Parts per million error calculated as [expected molecular mass - measured molecular mass]/expected molecular mass * 1e6).,numeric,column_header,-9999,0.000000001
+ET_kgm2year,kilograms per meters squared per year,"Annual evapotranspiration associated with each watershed, extracted from MODIS/AppEEARS products and summarized for the sampling period.",numeric,column_header,-9999,0.01
+ET_mean_mm_yr,millimeters per year,"Mean annual evapotranspiration associated with each watershed, extracted from MODIS/AppEEARS products and summarized for the sampling period.",numeric,column_header,NA,0.00001
+File_Description,N/A,A brief description of the files in the data package.,text,column_header,N/A,-9999
+File_Name,N/A,Name of files in the data package.,text,column_header,N/A,-9999
+File_Path,N/A,File path within the data package.,text,column_header,N/A,-9999
+Formula,N/A,Generalized additive model formula,text,column_header,N/A,-9999
+formula,N/A,Calibrated mass for a molecular formula assigned to an FTICR-MS peak used for the unique peak analyses,numeric,column_header,-9999,0.0001
+GFE,kJ per C mol,Gibbs free energy of the carbon oxidation half reaction under standard conditions. Calculated as per LaRowe and Van Cappellen (2011).,numeric,column_header,-9999,0.0000001
+GFE_0.mean,kJ per C mol,Mean Gibbs free energy summary under standard conditions (pH = 0) for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.001
+GFE_0.median,kJ per C mol,Median Gibbs free energy summary under standard conditions (pH = 0) for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.01
+GFE_0.sd,kJ per C mol,Standard deviation Gibbs free energy summary under standard conditions (pH = 0) for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0001
+GFE_7.mean,kJ per C mol,Mean Gibbs free energy summary corrected to pH 7 for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.001
+GFE_7.median,kJ per C mol,Median Gibbs free energy summary corrected to pH 7 for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.001
+GFE_7.sd,kJ per C mol,Standard deviation Gibbs free energy summary corrected to pH 7 for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0001
+GFEperC_0.mean,kJ per C mol,Mean Gibbs free energy of the carbon oxidation half reaction per C mol under standard conditions (pH = 0) for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00001
+GFEperC_0.median,kJ per C mol,Median Gibbs free energy of the carbon oxidation half reaction per C mol under standard conditions (pH = 0) for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00001
+GFEperC_0.sd,kJ per C mol,Standard deviation Gibbs free energy of the carbon oxidation half reaction per C mol under standard conditions (pH = 0) for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.000001
+GFEperC_7.mean,kJ per C mol,Mean Gibbs free energy of the carbon oxidation half reaction per C mol corrected to pH 7 for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0001
+GFEperC_7.median,kJ per C mol,Median Gibbs free energy of the carbon oxidation half reaction per C mol corrected to pH 7 for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0001
+GFEperC_7.sd,kJ per C mol,Standard deviation Gibbs free energy of the carbon oxidation half reaction per C mol corrected to pH 7 for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.000001
+H,N/A,Hydrogen atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+Header_Rows,N/A,"The number of rows or the number of columns that occur before the start of tabular data. This count assumes the numbering begins at 1 (rather than 0), excludes columns or rows that begin with ""#"", and includes the column or row that the header names are on. For example, if the file has columns with variable names but does not have any other metadata header rows, then this value is 1. Most data in this data package is oriented in columns, so this field indicates the number of rows before the start of the data (e.g., If row 1 has the column headers, row 2 has the units, and row 3 has the data values, then this value would be 2 - to indicate the count of the rows prior to the data values).",numeric,column_header,-9999,1
+Heteroatom_Class,N/A,"The type of heteroatoms (e.g., oxygen, nitrogen, sulfur, phosphorous) in a formula.",text,column_header,N/A,-9999
+HtoC.mean,N/A,Mean hydrogen-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+HtoC.median,N/A,Median hydrogen-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+HtoC.sd,N/A,Standard deviation hydrogen-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+HtoC_ratio,N/A,Hydrogen to carbon ratio.,numeric,column_header,-9999,0.0000001
+Is_Isotopologue,N/A,Indicates whether a formula contains different isotopes of the same atom with 0 indicating it is not an isotopologue and 1 indicating that it is an isotopologue.,numeric,column_header,-9999,1
+kdefect.CH2,N/A,"Kendrick Defect = Nominal Kendrick Mass - Kendrick Mass; Hughey et al., 2001.",numeric,column_header,-9999,0.000000001
+KenDef.mean,N/A,Mean Kendrick defect calculated from CH2-normalized Kendrick mass for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+KenDef.median,N/A,Median Kendrick defect calculated from CH2-normalized Kendrick mass for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+KenDef.sd,N/A,Standard deviation Kendrick defect calculated from CH2-normalized Kendrick mass for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+KenMass.mean,N/A,Mean CH2-normalized Kendrick mass for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0001
+KenMass.median,N/A,Median CH2-normalized Kendrick mass for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0001
+KenMass.sd,N/A,Standard deviation CH2-normalized Kendrick mass for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00001
+kmass.CH2,N/A,"(IUPACmass)(14/14.01565); where IUPAC mass is based on the 12C atomic mass as exactly 12 Da. Hughey et al., 2001.",numeric,column_header,-9999,0.0001
+lambdaO2_0.mean,N/A,"Mean thermodynamic efficiency, lambda, calculated under standard conditions (pH = 0) for molecular formulas or samples represented in the corresponding summary table.",numeric,column_header,-9999,0.00000001
+lambdaO2_0.median,N/A,"Median thermodynamic efficiency, lambda, calculated under standard conditions (pH = 0) for molecular formulas or samples represented in the corresponding summary table.",numeric,column_header,-9999,0.00000001
+lambdaO2_0.sd,N/A,"Standard deviation thermodynamic efficiency, lambda, calculated under standard conditions (pH = 0) for molecular formulas or samples represented in the corresponding summary table.",numeric,column_header,-9999,0.00000001
+lambdaO2_7.mean,N/A,"Mean thermodynamic efficiency, lambda, calculated at pH 7 for molecular formulas or samples represented in the corresponding summary table.",numeric,column_header,-9999,0.00000001
+lambdaO2_7.median,N/A,"Median thermodynamic efficiency, lambda, calculated at pH 7 for molecular formulas or samples represented in the corresponding summary table.",numeric,column_header,-9999,0.00000001
+lambdaO2_7.sd,N/A,"Standard deviation thermodynamic efficiency, lambda, calculated at pH 7 for molecular formulas or samples represented in the corresponding summary table.",numeric,column_header,-9999,0.000000001
+lamO2,N/A,Thermodynamic efficiency (defined by lambda) at pH 7. Calculated as per Song et al. (2020).,numeric,column_header,-9999,0.000000001
+lamO20,N/A,Thermodynamic efficiency (defined by lambda) at standard state (pH = 0). Calculated as per Song et al. (2020).,numeric,column_header,-9999,0.000000001
+mass.mean,mass to charge ratio,Mean mass expressed as mass-to-charge ratio (m/z) for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0001
+mass.median,mass to charge ratio,Median  mass expressed as mass-to-charge ratio (m/z) for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0001
+mass.sd,mass to charge ratio,Standard deviation of mass expressed as mass-to-charge ratio (m/z) for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00001
+Median_AI_mod,N/A,Median modified aromaticity index calculated for molecular formulas within a site and treatment.,numeric,column_header,-9999,0.00000001
+Median_DBE,N/A,Median double bond equivalent or degree of unsaturation calculated for molecular formulas within a site and treatment.,numeric,column_header,-9999,0.1
+Median_delGcoxPerCmol,kJ per C mol,"Median Gibbs free energy of the carbon oxidation half reaction at pH 7, calculated per C mol for molecular formulas within a site and treatment.",numeric,column_header,-9999,0.0001
+Median_delGcoxPerCompmol,kJ per compound mol,"Median Gibbs free energy of the carbon oxidation half reaction at pH 7, calculated per compound mol for molecular formulas within a site and treatment.",numeric,column_header,-9999,0.001
+Median_Formulas,count,Median number of molecular formulas summarized for a site and treatment.,numeric,column_header,-9999,0.1
+Median_Lambda,N/A,"Median thermodynamic efficiency, lambda, calculated for molecular formulas within a site and treatment.",numeric,column_header,-9999,0.00000001
+Median_NOSC,N/A,Median nominal oxidation state of carbon calculated for molecular formulas within a site and treatment.,numeric,column_header,-9999,0.0000001
+Missing_Value_Code,N/A,"Cells with missing data are represented with a missing value code rather than an empty cell. This column describes which missing value codes were used. In most cases, the missing value code for numeric data is ""-9999"" and for character data is ""N/A"". Some files also use a missing value format specific to when a data value is below the limit of detection or above/below the standard curve. For these cases: a text string is included in the format ""[data type]_*|*_Raw_Not_Corrected|*_Final_Corrected"" in which the asterisks are the denoted individual data values. See the associated methods deviation (DTL_003) description for more details.",text,column_header,N/A,-9999
+Model,N/A,Name or description of the statistical model represented in the model-comparison output.,text,column_header,N/A,-9999
+MolForm,N/A,"Molecular Formula. Same as ""Molecular_Formula"" column but shortened.",text,column_header,N/A,-9999
+N,N/A,Nitrogen atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+Name,N/A`,Name of ecoregion associated with the Parent ID. ,text,column_header,N/A,-9999
+NOSC,N/A,Nominal Oxidation State of Carbon calculated as per LaRowe and Van Cappellen (2011).,numeric,column_header,-9999,0.00000001
+NOSC.mean,N/A,Mean nominal oxidation state of carbon for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+NOSC.median,N/A,Median nominal oxidation state of carbon for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+NOSC.sd,N/A,Standard deviation nominal oxidation state of carbon for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+NPP_kgCm2,kilograms carbon per meters squared per year,"Net primary production associated with each watershed, extracted from MODIS/AppEEARS products and summarized for the sampling period.",numeric,column_header,-9999,0.01
+NPP_mean_kgC_m2_yr,kilograms carbon per meters squared per year,"Mean annual net primary production associated with each watershed, extracted from MODIS/AppEEARS products and summarized for the sampling period.",numeric,column_header,NA,0.0000001
+NtoC.mean,N/A,Mean nitrogen-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+NtoC.median,N/A,Median nitrogen-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+NtoC.sd,N/A,Standard deviation nitrogen-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+NtoC_ratio,N/A,Nitrogen to Carbon ratio.,numeric,column_header,-9999,0.00000001
+NtoP.mean,N/A,Mean nitrogen-to-phosphorus ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+NtoP.median,N/A,Median nitrogen-to-phosphorus ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.1
+NtoP.sd,N/A,Standard deviation nitrogen-to-phosphorus ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+NtoP_ratio,N/A,Nitrogen to Phosphorous ratio.,numeric,column_header,NA,1
+number.of.peaks,count,Number of FTICR-MS peaks detected in the sample after processing and filtering.,numeric,column_header,-9999,1
+O,N/A,Oxygen atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+OtoC.mean,N/A,Mean oxygen-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+OtoC.median,N/A,Median oxygen-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+OtoC.sd,N/A,Standard deviation oxygen-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.0000001
+OtoC_ratio,N/A,Oxygen to carbon ratio.,numeric,column_header,-9999,0.00000001
+P,N/A,Phosphorous atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+Parent_ID,N/A,WHONDRS parent site identifier for the sampling location.,text,column_header,N/A,-9999
+Pct_shrub,percent,"Percent shrub land cover in the watershed associated with the sampling location, extracted from the StreamCat dataset (Hill et al., 2016).",numeric,column_header,NA,0.01
+PctAg,percent,"Percent agricultural land cover in the watershed associated with the sampling location, extracted from the StreamCat dataset (Hill et al., 2016",numeric,column_header,NA,0.01
+PctFst,percent,"Percent forest land cover in the watershed associated with the sampling location, extracted from the StreamCat dataset (Hill et al., 2016).",numeric,column_header,NA,0.01
+peaks.with.formula,count,Number of FTICR-MS peaks with assigned molecular formulas after processing and filtering.,numeric,column_header,-9999,1
+PET_mean_mm_yr,millimeters per year,"Mean annual potential evapotranspiration associated with each watershed, extracted from MODIS/AppEEARS products and summarized for the sampling period.",numeric,column_header,NA,0.00001
+precipitation,millimeters,"Mean precipitation associated with the sampling location, extracted from PRISM climate data as 30-year normal mean annual precipitation (PRISM Climate Group).",numeric,column_header,NA,0.0001
+PtoC.mean,N/A,Mean phosphorus-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.000000001
+PtoC.median,N/A,Median phosphorus-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+PtoC.sd,N/A,Standard deviation phosphorus-to-carbon ratio for molecular formulas or samples represented in the corresponding summary table.,numeric,column_header,-9999,0.00000001
+PtoC_ratio,N/A,Phosphorus to Carbon ratio.,numeric,column_header,-9999,0.00000001
+R_squared,N/A,R-squared value representing the proportion of variance explained by a model or regression.,numeric,column_header,-9999,0.0000001
+Reported_Precision,N/A,"Precision of the reported data values. For example, if the values are rounded to 1 decimal place, the precision would be 0.1. Similarly, if a value like 5.24 is reported (rounded to 2 decimal places), its precision would be 0.01.",numeric,column_header,N/A,-9999
+S,N/A,Sulphur atoms in the analyzed molecule. Identified by an algorithm in Kujawinski and Behn (2006) and modified as described in Tfaily et al. (2017).,numeric,column_header,-9999,1
+Sample_ID,N/A,"Unique sample identifier for a sediment or water sample, including site, treatment, and replicate information when applicable.",text,column_header,N/A,-9999
+Significant_terms,N/A,Model terms identified as statistically significant in the model output.,text,column_header,N/A,-9999
+site,N/A,Sampling site identifier.,text,column_header,N/A,-9999
+slope,N/A,"Watershed slope associated with the sampling location, extracted from NHDPlus/StreamCat",numeric,column_header,NA,0.00000001
+Standard,N/A,ESS-DIVE Reporting Format (https://ess-dive.lbl.gov/data-reporting-formats/) or other standard applied to the data file.,text,column_header,N/A,-9999
+status,N/A,"Treatment-specific occurrence status of each molecular formula within a site. Values indicate whether the formula was unique to the wet treatment (unique_to_wet), unique to the dry treatment (unique_to_dry), or detected in both treatments (shared).",text,column_header,N/A,-9999
+Term_Type,N/A,"Indicates how the term is used in the data package (e.g., a column_header, row_header, data_flag, or other variable).",text,column_header,N/A,-9999
+Treatment,N/A,"Laboratory moisture treatment assigned to the sediment sample, such as wet or dry.",text,column_header,N/A,-9999
+Unit,N/A,Unit of measurement that applies to a given column or row in the data package.,text,column_header,N/A,-9999
